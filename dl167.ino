@@ -23,7 +23,7 @@ void cpu(){
     inst = mem[reg[7]];
     if (op2==0){
 /*MOV*/    if (0x00==(inst&0xc0)) reg[(inst&0x38)>>3]=reg[inst&7]; 
-/*add*/    if (0x40==(inst&0xf8)) if ((reg[0]+=reg[inst])>255) c_flag=1;
+/*add*/    if (0x40==(inst&0xf8)) if ((reg[0]+=reg[inst&7])>255) c_flag=1;
 /*or*/     if (0x48==(inst&0xf8)) reg[0]|=reg[inst&7];
 /*and*/    if (0x50==(inst&0xf8)) reg[0]&=reg[inst&7];
 /*xor*/    if (0x58==(inst&0xf8)) reg[0]=reg[0]^reg[inst&7];
